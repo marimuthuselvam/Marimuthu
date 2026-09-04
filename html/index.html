@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Marimuthu Selvam — Game Developer</title>
+<link rel="stylesheet" href="../css/styles.css" />
+</head>
+<body class="page-home"> 
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500;700;800&family=Sora:wght@600;700&display=swap" rel="stylesheet">
+
+
+<header>
+  <nav class="wrap">
+    <div class="nav-left">
+      <a href="index.html" class="home-btn" aria-label="Home">
+        <svg viewBox="0 0 24 24" width="24" height="24" fill="currentColor">
+          <path d="M12 0 L0 12 L1.5 13.5 L12 3 L22.5 13.5 L24 12 Z"/>
+          <path d="M12 5.5 L4 13.5 V24 H9.5 V15 H14.5 V24 H20 V13.5 Z"/>
+        </svg>
+      </a>
+
+      <div class="logo">
+        <span class="logo-letters">
+          <span>M</span><span>A</span><span>R</span><span>I</span><span>M</span>
+          <span>U</span><span>T</span><span>H</span><span>U</span><span>&nbsp;</span>
+          <span>S</span><span>E</span><span>L</span><span>V</span><span>A</span><span>M</span>
+        </span>
+      </div>
+    </div>
+
+    <ul class="nav-links">
+      <li><a href="index.html" aria-current="page">Home</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="projects.html">Projects</a></li>
+      <li><a href="qualifications.html">Qualifications</a></li>
+
+    </ul>
+
+    <a class="btn btn-primary" href="contact.html">Get in touch</a>
+    <button class="nav-toggle" aria-label="Toggle menu" aria-expanded="false">☰</button>
+  </nav>
+</header>
+
+<main id="page-content">
+
+<!-- ============== HERO ============== -->
+<section class="hero">
+  <div class="wrap hero-content">
+
+    <p class="eyebrow">GAME TECHNOLOGY • GAME DEVELOPMENT • ENGINEERING</p>
+
+    <h1>
+      Building with
+      <span class="accent">technology & creativity.</span>
+    </h1>
+
+    <p class="hero-sub">
+        I'm Marimuthu, a Game Technology student with a strong interest in technology,
+        programming, and interactive experiences. 
+        I enjoy building practical solutions, exploring new technologies, and 
+        developing creative projects.
+
+    </p>
+
+    <div class="hero-ctas">
+      <a class="btn btn-accent" href="../assets/resume.pdf" target="_blank" rel="noopener">
+        View Resume
+      </a>
+      <a class="btn btn-primary" href="../assets/resume.pdf" download>
+        ⬇ Download Resume
+      </a>
+    </div>
+
+  </div>
+</section>
+
+
+<!-- ============== SPOTLIGHT PROJECT ============== -->
+<section id="spotlight">
+  <div class="wrap">
+
+    <div class="section-head reveal">
+      <p class="eyebrow">SIGNATURE WORK</p>
+      <h2>Play it right in your browser.</h2>
+    </div>
+
+    <div class="project-grid">
+
+      <!-- Featured, playable project: Café Rush -->
+      <div class="project-card project-card--featured reveal">
+        <a href="project.html?id=cafe-rush" class="project-thumb project-thumb--a" data-scene="SCENE_00">
+          <img class="thumb-image" src="../assets/projects/cafe-rush/thumbnail.png" alt="Café Rush thumbnail" onerror="this.style.display='none'">
+          <span class="playable-badge">Playable</span>
+          <div style="font-size:3rem;">☕</div>
+        </a>
+
+        <div class="project-body">
+          <h3>Café Rush</h3>
+          <div class="chip-row" style="margin-bottom:10px;">
+            <span class="chip">Three.js</span>
+            <span class="chip">JavaScript</span>
+            <span class="chip">HTML</span>
+            <span class="chip">CSS</span>
+            <span class="chip">Mixamo</span>
+          </div>
+
+          <p>A 3D browser-based cooking game where players prepare and serve customers under time pressure. </p>
+
+          <div class="project-links">
+            <a href="../games/CafeToss/index.html" class="btn btn-primary">Play now →</a>
+            <a href="projects.html" class="btn btn-accent btn-view">View all projects →</a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+</section>
+
+
+<!-- ============== INTERNSHIP CTA ============== -->
+<section id="availability">
+  <div class="wrap">
+
+    <div class="panel reveal availability-panel">
+
+      <div>
+        <p class="eyebrow">CURRENTLY SEEKING</p>
+
+        <h2>Internship Opportunity</h2>
+
+        <p style="color:var(--text-muted); max-width:55ch;">
+          I'm seeking an internship in the Information Technology 
+          field where I can contribute to real-world projects, 
+          apply my technical skills, and gain valuable professional 
+          experience while continuing to grow in the industry.
+        </p>
+      </div>
+      <br>
+      <div class="availability-info">
+
+        <div>
+          <span class="skill-label">Availability</span>
+          <strong>28 Sep 2026 — 12 Mar 2027</strong>
+        </div>
+
+        <div>
+          <span class="skill-label">Duration</span>
+          <strong>24 weeks</strong>
+        </div>
+
+        <br>
+
+        <a class="btn btn-primary" href="contact.html">
+          Get in touch →
+        </a>
+
+      </div>
+
+    </div>
+
+  </div>
+</section>
+
+</main>
+<footer>
+  © <span id="year"></span> Marimuthu Selvam
+</footer>
+
+<script type="module" src="../js/script.js"></script>
+<script type="module" src="../js/logo-letters.js"></script>
+<script type="module" src="../js/mouse-trail.js"></script>
+<!-- -->
+
+</body>
+</html>

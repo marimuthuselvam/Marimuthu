@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Projects — Marimuthu Selvam</title>
+<link rel="stylesheet" href="../css/styles.css" />
+</head>
+<body class="page-projects">
+ 
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500;700;800&family=Sora:wght@600;700&display=swap" rel="stylesheet">
+ 
+
+<header>
+  <nav class="wrap">
+    <div class="nav-left">
+      <a href="index.html" class="home-btn" aria-label="Home">
+        <svg viewBox="0 0 24 24" width="24" height="24" fill="currentColor">
+          <path d="M12 0 L0 12 L1.5 13.5 L12 3 L22.5 13.5 L24 12 Z"/>
+          <path d="M12 5.5 L4 13.5 V24 H9.5 V15 H14.5 V24 H20 V13.5 Z"/>
+        </svg>
+      </a>
+      <div class="logo">
+        <span class="logo-letters"><span>M</span><span>A</span><span>R</span><span>I</span><span>M</span><span>U</span><span>T</span><span>H</span><span>U</span><span>&nbsp;</span><span>S</span><span>E</span><span>L</span><span>V</span><span>A</span><span>M</span></span>
+      </div>
+    </div>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="projects.html" aria-current="page">Projects</a></li>
+      <li><a href="qualifications.html">Qualifications</a></li>
+    </ul>
+    <a class="btn btn-primary" href="contact.html">Get in touch</a>
+    <button class="nav-toggle" aria-label="Toggle menu" aria-expanded="false">☰</button>
+  </nav>
+</header>
+
+<main id="page-content">
+
+<section class="page-hero">
+  <div class="wrap projects-hero-grid">
+
+    <div class="hero-text">
+      <h1>Projects & Development</h1>
+      <p>A selection of projects exploring game development, programming, interactive systems, and technical problem-solving across different tools and technologies.</p>
+    </div>
+  </div>
+</section>
+
+<section id="work">
+  <div class="wrap">
+    <div class="project-grid">
+
+      <!-- Featured, playable project: Café Rush -->
+      <div class="project-card project-card--featured reveal">
+        <a href="project.html?id=cafe-rush" class="project-thumb project-thumb--a" data-scene="SCENE_00">
+          <img class="thumb-image" src="../assets/projects/cafe-rush/thumbnail.png" alt="Café Rush thumbnail" onerror="this.style.display='none'">
+          <span class="playable-badge">Playable</span>
+          <div style="font-size:3rem;">☕</div>
+        </a>
+
+        <div class="project-body">
+          <h3>Café Rush</h3>
+          <div class="chip-row" style="margin-bottom:10px;">
+            <span class="chip">Three.js</span>
+            <span class="chip">JavaScript</span>
+            <span class="chip">HTML</span>
+            <span class="chip">CSS</span>
+            <span class="chip">Mixamo</span>
+          </div>
+
+          <p>A 3D browser-based cooking game where players prepare and serve customers under time pressure.</p>
+
+          <div class="project-links">
+            <a href="../games/CafeToss/index.html" class="btn btn-primary">Play now →</a>
+            <a href="project.html?id=cafe-rush" class="btn btn-accent btn-view">View project →</a>
+          </div>
+        </div>
+      </div>
+
+
+      <!-- Eclipsa -->
+      <div class="project-card reveal">
+        <a href="project.html?id=eclipsa" class="project-thumb project-thumb--b" data-scene="SCENE_01">
+          <img class="thumb-image" src="../assets/projects/eclipsa/thumbnail.png" alt="Eclipsa — VR vs PC thumbnail" onerror="this.style.display='none'">
+          <div style="font-size:3rem;">🥽</div>
+        </a>
+
+        <div class="project-body">
+          <h3>Eclipsa — VR vs PC</h3>
+          <div class="chip-row" style="margin-bottom:10px;">
+            <span class="chip">Unity</span>
+            <span class="chip">C#</span>
+            <span class="chip">Blender</span>
+            <span class="chip">Mixamo</span>
+          </div>
+
+          <p>A cross-platform action game where VR and PC players battle using the unique abilities of their respective platforms.</p>
+
+          <div class="project-links">
+            <a href="project.html?id=eclipsa" class="btn btn-accent btn-view">View project →</a>
+          </div>
+        </div>
+      </div>
+
+
+      <!-- Just a Platformer -->
+      <div class="project-card reveal">
+        <a href="project.html?id=platformer" class="project-thumb project-thumb--c" data-scene="SCENE_02">
+          <img class="thumb-image" src="../assets/projects/platformer/thumbnail.png" alt="Just a Platformer thumbnail" onerror="this.style.display='none'">
+          <span class="playable-badge">Playable</span>
+          <div style="font-size:3rem;">🕹️</div>
+        </a>
+
+        <div class="project-body">
+          <h3>Just a Platformer</h3>
+          <div class="chip-row" style="margin-bottom:10px;">
+            <span class="chip">GDevelop 5</span>
+            <span class="chip">Piskel</span>
+            <span class="chip">Photoshop</span>
+          </div>
+
+          <p>A 2D platformer focused on crisp movement, challenging levels, and responsive platforming.</p>
+
+          <div class="project-links">
+            <a href="https://chimuarufa.itch.io/just-a-platformer" target="_blank" rel="noopener noreferrer" class="btn btn-primary">Play/Download →</a>
+            <a href="project.html?id=platformer" class="btn btn-accent btn-view">View project →</a>
+          </div>
+        </div>
+      </div>
+
+
+      <!-- Hitman -->
+      <div class="project-card reveal">
+        <a href="project.html?id=hitman" class="project-thumb project-thumb--d" data-scene="SCENE_03">
+          <img class="thumb-image" src="../assets/projects/hitman/thumbnail.png" alt="Hitman — Top-Down Shooter thumbnail" onerror="this.style.display='none'">
+          <span class="playable-badge">Downloadable</span>
+          <div style="font-size:3rem;">🎯</div>
+        </a>
+
+        <div class="project-body">
+          <h3>Hitman — Top-Down Shooter</h3>
+          <div class="chip-row" style="margin-bottom:10px;">
+            <span class="chip">GDevelop 5</span>
+            <span class="chip">Piskel</span>
+          </div>
+
+          <p>A fast-paced top-down shooter where players fight waves of zombies using unique weapons across different levels.</p>
+
+          <div class="project-links">
+            <a href="https://shredninjar.itch.io/hitman-top-down-shooter" target="_blank" rel="noopener noreferrer" class="btn btn-primary">Download →</a>
+            <a href="project.html?id=hitman"class="btn btn-accent btn-view">View project →</a>
+          </div>
+        </div>
+      </div>
+
+
+      <!-- Auditorium Management System -->
+      <div class="project-card reveal">
+        <a href="project.html?id=auditorium" class="project-thumb project-thumb--e" data-scene="SCENE_04">
+          <img class="thumb-image" src="../assets/projects/auditorium/thumbnail.png" alt="Auditorium Management System thumbnail" onerror="this.style.display='none'">
+          <div style="font-size:3rem;">🎭</div>
+        </a>
+
+        <div class="project-body">
+          <h3>Auditorium Management System</h3>
+          <div class="chip-row" style="margin-bottom:10px;">
+            <span class="chip">SQL</span>
+            <span class="chip">MySQL</span>
+            <span class="chip">Visual Studio</span>
+          </div>
+
+          <p>A database-driven application for managing auditorium bookings, events, customers, services, and payments.</p>
+
+          <div class="project-links">
+            <a href="project.html?id=auditorium" class="btn btn-accent btn-view">View project →</a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  © <span id="year"></span> Marimuthu Selvam
+</footer>
+
+<script type="module" src="../js/script.js"></script>
+<script type="module" src="../js/logo-letters.js"></script>
+<script type="module" src="../js/mouse-trail.js"></script>
+<!-- -->
+</body>
+</html>

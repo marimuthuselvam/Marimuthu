@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Project — Marimuthu Selvam</title>
+<link rel="stylesheet" href="../css/styles.css" />
+</head>
+<body class="page-detail"> 
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500;700;800&family=Sora:wght@600;700&display=swap" rel="stylesheet">
+
+
+<header>
+  <nav class="wrap">
+    <div class="nav-left">
+      <a href="index.html" class="home-btn" aria-label="Home">
+        <svg viewBox="0 0 24 24" width="24" height="24" fill="currentColor">
+          <path d="M12 0 L0 12 L1.5 13.5 L12 3 L22.5 13.5 L24 12 Z"/>
+          <path d="M12 5.5 L4 13.5 V24 H9.5 V15 H14.5 V24 H20 V13.5 Z"/>
+        </svg>
+      </a>
+      <div class="logo">
+        <span class="logo-letters"><span>M</span><span>A</span><span>R</span><span>I</span><span>M</span><span>U</span><span>T</span><span>H</span><span>U</span><span>&nbsp;</span><span>S</span><span>E</span><span>L</span><span>V</span><span>A</span><span>M</span></span>
+      </div>
+    </div>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="projects.html" class="active-section">Projects</a></li>
+      <li><a href="qualifications.html">Qualifications</a></li>
+    </ul>
+    <a class="btn btn-primary" href="contact.html">Get in touch</a>
+    <button class="nav-toggle" aria-label="Toggle menu" aria-expanded="false">☰</button>
+  </nav>
+</header>
+
+<main id="page-content">
+
+<section class="page-hero page-hero--tight">
+  <div class="wrap">
+    <div class="project-hero-row">
+      <div class="project-hero-text">
+        <h1 id="pd-title">Loading…</h1>
+        <div id="pd-primary-action" style="margin-top:16px;"></div>
+        <div class="chip-row" id="pd-tech" style="margin-top:16px;"></div>
+        <div style="margin-top:28px;">
+          <a href="projects.html" class="btn btn-accent back-btn">← All projects</a>
+        </div>
+      </div>
+      <div class="project-hero-thumb" id="pd-thumbnail-wrap">
+        <img id="pd-thumbnail" src="" alt="">
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============== ABOUT ============== -->
+<section id="pd-about">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <h2>About this project</h2>
+    </div>
+    <div class="panel">
+      <p id="pd-description" style="color:var(--text); font-size:0.98rem; max-width:780ch;"></p>
+    </div>
+    <div class="project-links" id="pd-links" style="margin-top:20px;"></div>
+  </div>
+</section>
+
+<!-- ============== GALLERY (hidden if project has no images) ============== -->
+<section id="pd-gallery-section" hidden>
+  <div class="wrap">
+    <div class="section-head reveal in">
+      <h2>Screenshots</h2>
+    </div>
+    <div class="media-grid" id="pd-gallery"></div>
+  </div>
+</section>
+
+<!-- ============== VIDEO PANEL (hidden if project has no videos) ============== -->
+<section id="pd-video-section" hidden>
+  <div class="wrap">
+    <div class="section-head reveal in">
+      <h2>Gameplay / Demo</h2>
+    </div>
+    <div class="video-panel reveal in">
+      <video id="pd-video" controls playsinline muted></video>
+      <button class="video-nav video-nav--prev" id="pd-video-prev" aria-label="Previous video">‹</button>
+      <button class="video-nav video-nav--next" id="pd-video-next" aria-label="Next video">›</button>
+      <div class="video-panel-meta">
+        <span id="pd-video-counter">1 / 1</span>
+        <span class="video-hint">use ← → to navigate</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============== IMAGE LIGHTBOX ============== -->
+<div class="lightbox" id="pd-lightbox" hidden>
+  <button class="lightbox-close" id="pd-lightbox-close" aria-label="Close">✕</button>
+  <button class="lightbox-nav lightbox-nav--prev" id="pd-lightbox-prev" aria-label="Previous image">‹</button>
+  <img id="pd-lightbox-img" src="" alt="">
+  <button class="lightbox-nav lightbox-nav--next" id="pd-lightbox-next" aria-label="Next image">›</button>
+</div>
+
+</main>
+
+<footer>
+  © <span id="year"></span> Marimuthu Selvam — built with three.js
+</footer>
+
+<script type="module" src="../js/script.js"></script>
+<script type="module" src="../js/logo-letters.js"></script>
+<script type="module" src="../js/project-detail.js"></script>
+<script type="module" src="../js/mouse-trail.js"></script>
+<!-- -->
+</body>
+</html>

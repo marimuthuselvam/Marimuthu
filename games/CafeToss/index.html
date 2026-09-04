@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>☕CAFE RUSH☕</title>
+  <style>
+    /* Full page reset */
+    html, body {
+      margin: 0;
+      padding: 0;
+      width: 100%;
+      height: 100%;
+      background: #202020;
+      overflow: hidden;
+      font-family: sans-serif;
+    }
+
+    /* Forces overlays to keep flexbox centering when JavaScript shows them */
+    .menu-overlay[style*="display: block"] {
+      display: flex !important;
+    }
+
+    /* 3D canvas fills available space */
+    canvas {
+      display: block;
+      position: absolute;
+      top: 38px;
+      left: 250px; 
+      width: calc(100% - 270px);
+      height: calc(100% - 30px); /* shrink height so it doesn't overflow */
+    }
+
+
+
+    /* Left-side container for instructions + cookbook */
+    #left-ui-container {
+      position: fixed;
+      top: 10px;
+      left: 25px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px; /* space between instructions and cookbook */
+      z-index: 20;
+    }
+
+    /* Instructions box */
+    #ui {
+      width: 400px;             /* keep width */
+      height: auto;             /* let height adjust to content */
+      padding: 10px;            /* reduce spacing */
+      background: #000000;      /* black background */
+      border-radius: 6px;       /* slightly smaller corners */
+      color: #ffffff;           /* white text */
+      font-family: 'Poppins', sans-serif; /* nice font */
+      font-size: 14px;          /* slightly smaller text */
+      font-weight: 600;         /* bold-ish */
+      line-height: 1.5;         /* tighter spacing */
+      flex-shrink: 0;
+      margin-left: 15px; 
+      margin-top: 15px;
+    }
+
+    /* Left divider rectangle */
+    #left-divider {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 500px;            /* adjust this to whatever width you want */
+      height: 100vh;          /* full viewport height */
+      background-color: #000000; /* medium brown */
+      z-index: 5;             /* behind UI but above background */
+    }
+
+    #cookbook {
+      width: 315px;
+      height: auto;
+      border-radius: 6px;
+      flex-shrink: 0;
+      margin-top: -10px;
+      margin-left: 45px 
+    }
+
+    /* --- MAIN MENU STYLES --- */
+    .game-title {
+      font-size: 5rem; /* Makes the title massive */
+      margin-bottom: 15px;
+      margin-top: 0;
+      text-shadow: 4px 4px 0px #000; /* Adds a nice drop shadow */
+    }
+
+    .tutorial-text {
+      background: rgba(0, 0, 0, 0.6);
+      padding: 20px 40px;
+      border-radius: 8px;
+      margin-bottom: 40px;
+      text-align: left;
+      border: 1px solid #555;
+      max-width: 500px;
+    }
+
+    .tutorial-text h2 {
+      margin-top: 0;
+      text-align: center;
+      color: #4CAF50; 
+      font-size: 1.6rem;
+      margin-bottom: 15px;
+    }
+
+    .tutorial-text h3 {
+      margin: 15px 0 5px 0;
+      color: #ffcc00; /* A nice yellow to make sections stand out */
+      font-size: 1.2rem;
+      border-bottom: 1px solid #555;
+      padding-bottom: 5px;
+    }
+
+    .tutorial-text ul {
+      margin: 0;
+      padding-left: 20px;
+      line-height: 1.6;
+      font-size: 1.1rem;
+    }
+
+    .main-menu-buttons {
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+    }
+
+    .menu-btn {
+      font-size: 1.5rem; /* Makes the buttons significantly larger */
+      padding: 15px 40px;
+      border-radius: 8px;
+      border: 2px solid white;
+      background: #444;
+      color: white;
+      cursor: pointer;
+      transition: background 0.2s;
+      min-width: 250px;
+    }
+
+    .menu-btn:hover {
+      background: #666;
+    }
+
+    /* Menu overlays */
+    .menu-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.9);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      z-index: 100;
+      color: white;
+      text-align: center;
+    }
+
+    .button-group {
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+      margin-top: 20px;
+    }
+
+    .button-group button {
+      padding: 12px 30px;
+      cursor: pointer;
+      font-size: 1.1rem;
+      min-width: 200px;
+      border-radius: 8px;
+      border: 2px solid white;
+      background: #444;
+      color: white;
+      transition: background 0.2s;
+    }
+
+    .button-group button:hover {
+      background: #666;
+    }
+
+    .options {
+      margin: 20px;
+      display: flex;
+      gap: 10px;
+    }
+
+    button {
+      padding: 10px 20px;
+      cursor: pointer;
+      font-size: 1.2rem;
+    }
+
+    .active {
+      background: #4CAF50;
+      color: white;
+      border: 2px solid white;
+    }
+
+    /* Make the general UI text smaller and cleaner */
+    .game-info {
+      font-size: 14px; 
+      line-height: 1.6;
+      color: #f0f0f0;   /* Light gray */
+      margin-bottom: 0px;
+    }
+
+    .game-info hr {
+      border: none;
+      border-top: 2px dashed #888; /* Lighter divider */
+      margin: 10px 0;
+    }
+
+    .log-label {
+      font-size: 12px;
+      text-transform: uppercase;
+      color: #d0d0d0;   /* Light gray */
+      font-weight: bold;
+    }
+
+    #log {
+      font-style: italic;
+      color: #d35400; /* Distinct color for the action log */
+      min-height: 20px; /* Prevents layout jump if log is empty */
+    }
+
+    /* The new big, thick RECIPE text */
+    .recipe-title {
+      font-family: 'Arial Black', Impact, sans-serif; /* Thick, heavy fonts */
+      font-size: 42px;
+      font-weight: 900;
+      text-align: center;
+      letter-spacing: 0px;
+      
+      /* white */
+      color: #ffffff;   
+      
+      /* Creates a chunky, arcade-style border/shadow effect */
+      text-shadow: 
+        3px 3px 0px #000, 
+        -1px -1px 0px #000,  
+        1px -1px 0px #000,
+        -1px 1px 0px #000,
+        1px 1px 0px #000;
+      
+      margin-top: 1px;
+      margin-bottom: 1px;
+    }
+  </style>
+  <script type="module" crossorigin src="./assets/index-D_-UHj6B.js"></script>
+</head>
+<body>
+
+<!-- Left UI container -->
+  <div id="left-ui-container">
+    <div id="ui" style="display:none;">
+      
+      <!-- Smaller, cleaner text for instructions and status -->
+      <div class="game-info">
+        WASD / Arrow Keys: Move <br>
+        E / Spacebar: Interact <br>
+        Held Item: <strong><span id="heldItem">None</span></strong>
+        <hr>
+        <span class="log-label">Last Action:</span><br>
+        <div id="log"></div>
+      </div>
+
+      <!-- New big, thick RECIPE text -->
+      <div class="recipe-title">RECIPE</div>
+
+            <img id="cookbook" src="./assets/cookbook.png" alt="Cookbook">
+
+    </div>
+  </div>
+
+
+  </div>
+  <div id="left-divider"></div>
+  
+  <!-- Top Right Quit Button -->
+<button id="quit-btn" class="btn" onclick="quitGame()" style="position: absolute; top: 20px; right: 20px; z-index: 100; display: none;">QUIT GAME</button>
+  
+
+
+<!-- Main menu -->
+  <div id="main-menu" class="menu-overlay">
+    
+    <h1 class="game-title">CAFE RUSH</h1>
+    
+    <!-- Tutorial Section -->
+    <div class="tutorial-text">
+      <h2>WELCOME TO CAFE RUSH!!!</h2>
+      
+      <h3>Controls</h3>
+      <ul>
+        <li><strong>WASD / Arrow Keys:</strong> Move</li>
+        <li><strong>E / Spacebar:</strong> Interact</li>
+      </ul>
+
+      <h3>How to Play</h3>
+      <ul>
+        <li>Take orders and serve customers.</li>
+        <li>Pick up ingredients and cook them at the correct station.</li>
+        <li>Pick up cooked food and deliver it.</li>
+        <li>Follow the recipe guide on the left.</li>
+        <li>Don't leave food too long or it will burn.</li>
+        <li>Serve quickly before customers lose patience.</li>
+      </ul>
+    </div>
+
+    <!-- Buttons Section -->
+    <div class="main-menu-buttons">
+      <button class="menu-btn" onclick="showScreen('level-select')">Start Game</button>
+      <button class="menu-btn" onclick="window.location.href = '../../html/projects.html'">Return</button>
+    </div>
+
+  </div>
+
+  <!-- Level select menu -->
+  <div id="level-select" class="menu-overlay" style="display:none;">
+    <h2>Select Level</h2>
+    <div class="options">
+      <button class="lvl-btn" onclick="selectLevel(1)">Level 1 (5 Orders)</button>
+      <button class="lvl-btn" onclick="selectLevel(2)">Level 2 (10 Orders)</button>
+      <button class="lvl-btn" onclick="selectLevel(3)">Level 3 (15 Orders)</button>
+    </div>
+    
+    <h3>Difficulty</h3>
+    <div class="options">
+      <button class="diff-btn active" id="diff-1" onclick="selectDiff(1)">Easy</button>
+      <button class="diff-btn" id="diff-2" onclick="selectDiff(2)">Medium</button>
+      <button class="diff-btn" id="diff-3" onclick="selectDiff(3)">Hard</button>
+    </div>
+    
+    <button id="go-btn" onclick="startGame()">GO!</button>
+  </div>
+
+  <!-- End screen -->
+  <div id="end-screen" class="menu-overlay" style="display:none;">
+    <h1 id="end-title" style="font-size: 3rem; margin-bottom: 10px;">YOU WIN!</h1>
+    
+    <div class="button-group">
+      <button onclick="localStorage.setItem('autoRestart', 'true'); location.reload();">
+        Play Again
+      </button>
+      <button onclick="localStorage.removeItem('autoRestart'); location.reload();">
+        Main Menu
+      </button>
+    </div>
+  </div>
+
+  <!-- Loading screen -->
+  <div id="loading-screen" class="menu-overlay" style="display:none;">
+    <h1 class="game-title" style="font-size: 3rem;">Loading...</h1>
+  </div>
+
+  <!-- Vite loads this as a module -->
+
+</body>
+</html>
